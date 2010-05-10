@@ -6,7 +6,7 @@ set xlabel "LRU sets"
 set ylabel "Bytes used"
 set key left box
 # can we not parameterize these two? ugh
-set out "out/lrumap4.pdf"
+set out "out/figures/lrumap4.pdf"
 lruorder = 4
 lg2(x) = log(x) / log(2)
 fac(n) = int(n)!
