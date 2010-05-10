@@ -38,4 +38,3 @@ test: all
 
 clean:
 	rm -rf $(OUT)
-	rm -f $(wildcard *.aux) $(wildcard *.bbl) $(wildcard *.blg) $(wildcard *.log) $(wildcard *.pdf) $(wildcard *.out)
