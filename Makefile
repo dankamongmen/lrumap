@@ -7,10 +7,11 @@ VPDF:=evince
 VSVG:=rsvg-view
 
 OUT:=out
+DOCOUT:=out/doc
 FIGOUT:=out/figures
 PRO:=cs7260final
-TEX:=$(PRO).tex
-PDF:=$(PRO).pdf
+TEX:=doc/papers/$(PRO).tex
+PDF:=$(DOCOUT)/$(PRO).pdf
 PLOT:=$(notdir $(basename $(wildcard doc/figures/*.pl)))
 IMG:=$(addsuffix .pdf,$(addprefix $(FIGOUT)/,$(PLOT)))
 
@@ -18,12 +19,12 @@ CFLAGS:=-O2 -W -Wall -Werror -Wextra -march=native -mtune=native
 
 all: $(IMG) $(PDF) $(BIN)
 
-%.pdf: doc/papers/%.tex doc/papers/%.bib $(IMG) $(MAKEFILES)
+$(DOCOUT)/%.pdf: $(TEX) doc/papers/%.bib $(IMG) $(MAKEFILES)
 	@[ -d $(@D) ] || mkdir -p $(@D)
-	pdflatex --output-directory $(<D) $<
-	bibtex $(basename $<)
-	pdflatex --output-directory $(<D) $<
-	pdflatex --output-directory $(<D) $<
+	pdflatex --output-directory $(@D) $<
+	bibtex $(basename $@)
+	pdflatex --output-directory $(@D) $<
+	pdflatex --output-directory $(@D) $<
 
 $(FIGOUT)/%.pdf: doc/figures/%.pl $(MAKEFILES)
 	@[ -d $(@D) ] || mkdir -p $(@D)
