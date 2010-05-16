@@ -38,7 +38,7 @@
 \maketitle
 \begin{abstract}
 Traditional $O(n)$ or even $O(\lg{n})$ LRU implementations are too slow for
-backbone routers and IPS devices. We introduce LRUSET, a novel $O(1)$ true LRU
+backbone routers and IPS devices. I introduce LRUMAP, a novel $O(1)$ true LRU
 scheme which becomes more space-efficient as the number of monitored sets
 increases.
 \end{abstract}
@@ -175,7 +175,7 @@ memory. This ensures that the \texttt{update()} function can be evaluated in
 constant time. By carefully placing the functions within the PPT, we can cut its
 size. For instance, every $\sigma\in\Sigma$ will map some input to itself; this
 corresponds to the case of the most recently used item being referenced. For each
-valid $l$, this will be true for exactly $\frac{r!}/r$ elements. Thus, by sorting
+valid $l$, this will be true for exactly $\frac{r!}{r}$ elements. Thus, by sorting
 the permutations by the $l$ which they map to themselves, we can remove these
 elements---$\frac{1}{r}$ of the entries! This saves 25\% and 12.5\% of the space
 used by LRUMAP for $r=4$ and $r=8$, respectively.
